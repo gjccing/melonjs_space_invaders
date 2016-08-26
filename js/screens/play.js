@@ -2,7 +2,7 @@ game.PlayScreen = me.ScreenObject.extend({
 
     checkIfLoss: function (y) {
         if (y >= (this.player.pos.y - this.player.height) ) {
-            this.reset();
+            me.state.change(me.state.GAMEOVER);
         }
     },
 
@@ -23,6 +23,14 @@ game.PlayScreen = me.ScreenObject.extend({
         me.input.bindKey(me.input.KEY.A , "left");
         me.input.bindKey(me.input.KEY.D , "right");
         me.input.bindKey(me.input.KEY.SPACE, "shoot", true);
+
+
+        me.input.bindKey(me.input.KEY.H, "help", true);
+        this.handler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
+            if (action === "help") {
+                me.state.change(me.state.MENU);
+            }
+        });
     },
 
     /**
@@ -34,5 +42,8 @@ game.PlayScreen = me.ScreenObject.extend({
         me.input.unbindKey(me.input.KEY.A);
         me.input.unbindKey(me.input.KEY.D);
         me.input.unbindKey(me.input.KEY.SPACE);
+
+        me.input.unbindKey(me.input.KEY.H);
+        me.event.unsubscribe(this.handler);
     }
 });

@@ -40,6 +40,9 @@ var game = {
 
         this.playScreen = new game.PlayScreen();
         me.state.set(me.state.PLAY, this.playScreen);
+        me.state.set(me.state.GAME_END, new game.WinScreen());
+        me.state.set(me.state.GAMEOVER, new game.LossScreen());
+        me.state.set(me.state.MENU, new game.HelpScreen());
         
         // Start the game.
         me.state.change(me.state.PLAY);

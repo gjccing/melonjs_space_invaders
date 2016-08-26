@@ -44,6 +44,7 @@ var game = {
         me.state.set(me.state.GAMEOVER, new game.LossScreen());
         me.state.set(me.state.MENU, new game.HelpScreen());
         
+        game.level = 1;
         // Start the game.
         me.state.change(me.state.PLAY);
     }

@@ -39,7 +39,7 @@ game.EnemyManager = me.Container.extend({
       } else {
         _this.pos.x += _this.vel;
       }
-    }, 100);
+    }, 1000 - game.level * 100 + 50 );
   },
 
   onDeactivateEvent: function () {

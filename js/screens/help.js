@@ -20,6 +20,9 @@ game.HelpScreen = me.ScreenObject.extend({
                 this.helpFont.draw(renderer, "Key SPACE ... shoot", me.game.viewport.width / 2 - 150, 350);
                 this.btnFont.draw(renderer, "PRESS ENTER TO RESUME", me.game.viewport.width / 2, 500);
             },
+            update : function (dt) {
+              return true;
+            },
             onDestroyEvent : function () {
             }
         })), 2);

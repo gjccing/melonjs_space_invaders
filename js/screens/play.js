@@ -48,5 +48,7 @@ game.PlayScreen = me.ScreenObject.extend({
 
         me.input.unbindKey(me.input.KEY.H);
         me.event.unsubscribe(this.handler);
+        
+        me.game.world.removeChild(this.HUD);
     }
 });

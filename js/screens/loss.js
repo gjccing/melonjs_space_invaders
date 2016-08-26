@@ -16,6 +16,9 @@ game.LossScreen = me.ScreenObject.extend({
                 this.titleFont.draw(renderer, "LOSS", me.game.viewport.width / 2, 200);
                 this.btnFont.draw(renderer, "PRESS ENTER TO RESTART", me.game.viewport.width / 2, 350);
             },
+            update : function (dt) {
+              return true;
+            },
             onDestroyEvent : function () {
             }
         })), 2);
@@ -24,6 +27,7 @@ game.LossScreen = me.ScreenObject.extend({
         this.handler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
             if (action === "restart") {
                 me.state.change(me.state.PLAY);
+                game.level = 1;
             }
         });
     },

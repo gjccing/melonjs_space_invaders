@@ -39,20 +39,28 @@ game.HUD.ScoreItem = me.Renderable.extend({
         // (size does not matter here)
         this._super(me.Renderable, 'init', [x, y, 10, 10]);
 
+        this.leftFont = new me.Font('Serif', 24, '#FFFFFF', "left");
+        this.rightFont = new me.Font('Serif', 24, '#FFFFFF', "right");
+
         // local copy of the global score
-        this.score = -1;
+        this.enemyCounter = -1;
+        this.enemyVel = -1;
     },
 
     /**
      * update function
      */
     update : function () {
-        // we don't do anything fancy here, so just
-        // return true if the score has been updated
-        if (this.score !== game.data.score) {
-            this.score = game.data.score;
+        if (this.enemyCounter !== game.playScreen.enemyManager.children.length) {
+            this.enemyCounter = game.playScreen.enemyManager.children.length;
             return true;
         }
+
+        if (this.enemyVel !== game.playScreen.enemyManager.vel) {
+            this.enemyVel = game.playScreen.enemyManager.vel
+            return true;
+        }
+         
         return false;
     },
 
@@ -61,6 +69,8 @@ game.HUD.ScoreItem = me.Renderable.extend({
      */
     draw : function (context) {
         // draw it baby !
+        this.leftFont.draw(context, this.enemyCounter, 5, 5);
+        this.rightFont.draw(context, Math.abs(this.enemyVel), me.game.viewport.width-5, 5);
     }
 
 });

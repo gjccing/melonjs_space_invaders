@@ -39,7 +39,7 @@ game.EnemyManager = me.Container.extend({
       } else {
         _this.pos.x += _this.vel;
       }
-    }, 1000);
+    }, 100);
   },
 
   onDeactivateEvent: function () {
